@@ -1,0 +1,394 @@
+* {
+    margin: 0;
+    padding: 0;
+    // background-color: #080e37;
+}
+body{
+    background-color: #080e37;
+}
+
+.head {
+    width: 100%;
+    height: 110px;
+    background-color: #080e37;
+    border-bottom: 0.5px solid #383838;
+
+    //底部线
+    .banner {
+        width: 100%;
+        height: 100px;
+        background-color: #080e37;
+        margin: 0 auto;
+
+        .logo {
+            width: 100px;
+            height: 100px;
+            float: left;
+            margin-top: 20px;
+            margin-left: 20px;
+        }
+
+        .daohanglan2 {
+            display: none;
+
+            button {
+                width: 40px;
+                height: 40px;
+                background-color: #df2863;
+                margin-right: 30px;
+                margin-top: 50px;
+                float: right;
+                //边框椭圆
+                border-radius: 5%;
+
+            }
+
+            ul {
+                background-color: #df2863;
+                width: 100%;
+                height: 100px;
+                margin-top: 100px;
+                float: right;
+
+                li {
+                    a {
+                        color: white;
+                        font-size: 30px;
+                        float: right;
+                    }
+                }
+            }
+        }
+
+
+
+        ul {
+            list-style: none;
+            margin-top: 35px;
+            float: right;
+            margin-right: 100px;
+
+
+            li {
+                display: inline-block;
+                margin-left: 35px;
+                color: white;
+                font-size: 15px;
+
+                .bt-1 {
+                    width: 100px;
+                    height: 50px;
+                    color: white;
+                    border: 1px solid #df2863;
+                    background-color: #080e37;
+                    border-radius: 10%;
+                }
+
+                .bt-1:hover {
+                    background-color: #df2863;
+                }
+
+                .bt-2 {
+                    width: 100px;
+                    height: 50px;
+                    color: white;
+                    border: 1px solid #df2863;
+                    background-color: #df2863;
+                    border-radius: 10%;
+
+
+                }
+            }
+
+            li:hover {
+                color: #df2863;
+                //1s 匀速
+                transition: 1s;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    //小于1200px 时的样式
+
+    .daohanglan {
+        display: none;
+    }
+
+
+    .head {
+        .banner {
+            .daohanglan2 {
+                visibility: visible;
+                display: block;
+                ul{
+                    width: 100%;
+                    height: auto;
+
+                    li{
+                        width: 100%;
+                        height: auto;
+
+                        a{
+                            color: white;
+                            font-size: 30px;
+                            float: left;
+                            margin-left: 50px;
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+
+
+    .hero-section {
+        width: 100%;
+        height: auto; // 高度自适应
+        background-color: #080e37;
+        background-image: url(./imgs/e9a9e18f4fbe69d179591a36ac60ed2.png);
+        background-repeat: no-repeat;
+        background-size: cover; // 图片覆盖整个区域
+        background-position: center top; // 图片位于顶部居中
+
+        .container {
+            width: 100%; // 宽度自适应
+            height: auto; // 高度自适应
+            margin: 0 auto;
+            padding-top: 100px;
+            color: white;
+            text-align: center; // 内容居中
+
+            .hero-content {
+                font-size: 15px;
+                border: 1px solid #df2863;
+                //边框椭圆
+            }
+        }
+    }
+}
+
+.hero-section {
+    width: 100%;
+    height: 950px;
+    background-color: #080e37;
+    background-image: url(./imgs/e9a9e18f4fbe69d179591a36ac60ed2.png);
+    background-repeat: no-repeat;
+
+    .container {
+        width: 1200px;
+        height: 525px;
+        margin: 0 auto;
+        padding-top: 100px;
+        color: white;
+        margin-top: 100px;
+
+        .hero-content {
+            font-size: 15px;
+            border: 1px solid #df2863;
+            //边框椭圆
+        }
+    }
+}
+
+.box2 {
+    width: 100%;
+    background-color: #080e37;
+    font-size: 20px;
+    background-image: url(./imgs/e9a9e18f4fbe69d179591a36ac60ed2.png);
+
+    .b2-1 {
+        padding-top: 40px;
+
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .b2-2 {
+        display: flex;
+        margin: 10px;
+
+        .xb-2 {
+            margin-right: 20px;
+        }
+    }
+
+    p {
+        color: white;
+    }
+
+    .p1 {
+        font-size: 15px;
+        color: white;
+        margin-top: 20px;
+        border: 1px solid #df2863;
+        //边框椭圆
+        border-radius: 50px;
+        width: 100px;
+        height: 20px;
+        margin: 0 auto;
+        padding: 10px;  
+        
+
+        
+    }
+
+    .p2{
+        font-size: 60px;
+
+    }
+
+    .p3{
+        font-size: 15px;
+    }
+
+    .xb-1 {
+        margin-right: 30px;
+        padding: 10px;
+        border: 1px solid #e61e5e;
+        border-radius: 5px;
+        color: white;
+        &:hover {
+            background-color: #e61e5e;
+        }
+    }
+
+    .xb-2 {
+
+        padding: 10px;
+        background-color: #e61e5e;
+        border-radius: 5px;
+        color: white;
+
+        &:hover {
+            background-color: linear-gradient(to bottom, #e61e5e, #23000b);
+        }
+    }
+}
+
+.jackpot-section {
+    width: 100%;
+    height: 400px;
+    background-color: #080e37;
+    padding: 100px ;
+    .container {
+        color: white;
+        border: 3px solid #df2863;
+        border-radius: 150px;
+        margin: 0 auto;
+        
+        img{
+            margin-top: -85px;
+            margin-left: 20px;
+        }
+        .jackpot-title {
+            margin-top: 50px;
+            margin-left: 20px;
+            width: 100px;
+            span{
+                font-size: 35px;
+                color: #e61e5e;
+            }
+            
+        }
+
+       .jackpot-counter{
+            margin-top: 20px;
+            margin-left: 20px;
+            width: 100px;
+            span{
+                font-size: 77px;
+            }
+       }
+    
+    }
+}
+
+.seaction-title{
+    width: 100%;
+    height: 200px;
+    background-color: #080e37;
+    color: white;
+    text-align: center;
+    font-size: 30px;
+    padding-top: 100px  ;
+    .tt-1{
+        margin-top: 0px;
+        span{
+            color: white;
+            font-size: 15px;
+            border: 1px solid #df2863;
+            border-radius: 50px;
+            padding:10px;
+        }
+    }
+    
+}
+
+.seaction-manu{
+    width: 100%;
+    background-color: #080e37;
+    .seaction-photo{
+        // width: 50%;
+        float: left;
+        img{
+            width: 80%;
+            margin-left: 0px;
+        }
+    }
+    .seaction-op{
+        // width: 50%;
+        float: right;
+        img{
+            width: 80%;
+            height: 30%;
+            padding: 10px;
+            margin-right: 0px;
+        }
+        
+    }
+
+}
+.howtoplay-section{
+    width: 100%;
+    height: auto;
+    background-color: #080e37;
+    color: white;
+    text-align: center;
+    font-size: 30px;
+    .op{
+        border: 1px solid #df2863;
+        border-radius: 50px;
+        padding: 10px;
+        width: 150px;
+        margin: 0 auto;
+        margin-top: 50px;
+    }
+    .step-box{
+        border: 1px solid #df2863;
+        border-radius: 50px;
+        padding: 10px;
+        .step-no{
+            color: #383838;
+            float: right;
+            margin-top: 5px;
+            margin-right: 5px;
+        }
+        .step-icon{
+            margin-top: 50px;
+           
+        } 
+        p{
+                font-size: 15px;
+                color: #7e7d7d;
+
+            }
+    }
+    
+    
+}

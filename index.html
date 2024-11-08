@@ -1,35 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        body{
+        body {
             /* 炫彩 */
-            background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+            background-image: linear-gradient(90deg, #84fab0 0%, #8fd3f4 100%);
         }
 
-        div{
-            width: 100px;
-            height: 100px;
-            margin: 100px auto;
-            border-radius: 50%;
-            background-color: #fff;
+        h1 {
             text-align: center;
-            line-height: 100px;
         }
-        div img{
-            width: 100px;
-            height: auto;
 
+        .show-1 {
+            width: 100%;
+            height: 250px;
+        }
+
+        .content {
+            display: flex;
+            width: 1000px;
+            height: 250px;
+            margin: 0 auto;
+            /* 水平居中 */
+
+        }
+
+        .content div {
+            width: 200px;
+            height: 200px;
+            display: flex;
+            margin-left: 100px;
+        }
+
+        .content div a {
+            text-decoration: none;
+            color: #000;
+            font-size: 20px;
+            font-weight: bold;
+            /* 文字居中 */
+            text-align: center;
+        }
+
+        .content div a img {
+            width: 200px;
         }
     </style>
 </head>
+
 <body>
-    
-    <div>
-        <a href="./拼图小游戏/拼图练习.html"><img src="./拼图小游戏/feaa87b941b7592ae443bc066bb57b4.png" alt="">拼图小游戏</a>
+    <h1>js/jQ作品展示</h1>
+    <div class="show-1">
+        <div class="content">
+            <div class="pingtu">
+                <a href="./拼图小游戏/拼图练习.html"><img src="./拼图小游戏/feaa87b941b7592ae443bc066bb57b4.png" alt="">js拼图小游戏</a>
+            </div>
+            <div class="sfq">
+                <a href="./jq/作业2-手风琴.html"><img src="./jq/IMG/手风琴演示.png" alt="">jQ手风琴轮播图</a>
+            </div>
+            <div>
+                <a href="./jq/作业1-商品管理系统.html"><img src="./jq/IMG/简易商品管理系统.png" alt="">jQ后台存储</a>
+            </div>
+        </div>
+    </div>
+    <h1>响应式布局</h1>
+    <div class="show-1">
+
+        <div class="content">
+            <div>
+            </div>
+            <div>
+                <a href="./响应式布局/威尼斯/weinisi.html"><img src="./响应式布局/威尼斯/imgs/响应式布局.png" alt="">威尼斯布局</a>
+            </div>
+            <div>
+            </div>
+        </div>
+
     </div>
 </body>
+
 </html>
