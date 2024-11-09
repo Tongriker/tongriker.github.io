@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        background: #ffffff;
+        color: #ffffff;
+        text-align: center;
+    }
+
+    .box{
+        width: 455px;
+        height: 530px;
+        margin: 50px auto;
+        border: 1px solid #000000;
+        background-color: #ff0000;
+    }
+
+    audio {
+        width: 450px;
+        margin: 10px 0;
+    }
+
+    .container {
+        width: 450px;
+        height: 420px;
+        overflow: hidden;
+        /* border: 1px solid #000000; */
+        margin: 0 auto;
+        border-radius: 10px;
+        background-color: #ff0000;
+    }
+
+    .container ul {
+        transition: 0.3s;
+
+    }
+
+    .container li {
+        height: 30px;
+        line-height: 30px;
+        transition: 0.3s;
+        list-style: none;
+
+    }
+
+    .container li.active {
+        color: #00f2ff;
+        transform: scale(1.5);
+        font-size: 15px;
+    }
+</style>
+
+<body>
+    <div class="box">
+    <div class="container">
+        <ul>
+        </ul>
+        
+    </div>
+    <audio src="https://music.163.com/song/media/outer/url?id=33894312.mp3" controls></audio>
+    <br> 
+    <button>上一首</button>
+    <button>下一首</button>
+   </div>
+
+    <script src="./data.js"></script>
+    <script src="./index.js"></script>
+</body>
+
+</html>
