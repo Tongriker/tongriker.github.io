@@ -13,6 +13,9 @@
 
         h1 {
             text-align: center;
+            background: -webkit-linear-gradient(45deg, #ff0055, #e73c7e, #23a6d5, #23d5ab);
+            -webkit-background-clip: text;
+            color: transparent;
         }
 
         .show-1 {
@@ -48,6 +51,16 @@
         .content div a img {
             width: 200px;
         }
+        .content>div:hover{
+            transform: translateY(-8px);
+            transition: all 0.5s;
+        }
+        .content>div:hover img{
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.678);
+        }
+        .content>div:hover a{
+            text-shadow: 0 0 20px rgba(0, 0, 0, 0.678);
+        }
     </style>
 </head>
 
@@ -65,6 +78,9 @@
                 <a href="./jq/作业1-商品管理系统.html"><img src="./jq/IMG/简易商品管理系统.png" alt="">jQ后台存储</a>
             </div>
         </div>
+    </div>
+    <p></p>
+    <div class="show-1">
         <div class="content">
             <div class="pingtu">
                 <a href="./拼图小游戏/拼图练习.html"><img src="./拼图小游戏/feaa87b941b7592ae443bc066bb57b4.png" alt="">js拼图小游戏</a>
@@ -89,7 +105,6 @@
             <div>
             </div>
         </div>
-
     </div>
 </body>
 
