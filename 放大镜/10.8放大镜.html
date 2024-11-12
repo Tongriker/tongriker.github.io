@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="xxx">
+        <div class="stage">
+            <img src="./img/banner1.jpg" alt="" />
+            <div class="mask"></div>
+        </div>
+        <div class="preview">
+            <img src="./img/banner1.jpg" alt="" />
+        </div>
+    </div>
+    <label><input type="checkbox" ><img src="./img/banner1.jpg" alt=""></label>
+    <label><input type="checkbox" ><img src="./img/banner2.jpg" alt=""></label>
+    <label><input type="checkbox" ><img src="./img/banner3.jpg" alt=""></label>
+    <label><input type="checkbox" ><img src="./img/banner4.jpg" alt=""></label>
+    <label><input type="checkbox" ><img src="./img/banner5.jpg" alt=""></label>
+    <br>
+    <input type="range" min="2" max="4">
+
+
+    <style>
+        .xxx {
+            display: flex;
+        }
+
+        .stage {
+            width: 400px;
+            height: 400px;
+            position: relative;
+        }
+
+        .stage:hover {
+            cursor: zoom-in;
+        }
+
+        .stage img {
+            width: 100%;
+        }
+
+        .stage .mask {
+            width: 135px;
+            height: 135px;
+            background-image: url("./img/mask-bg.png");
+            /* background-color: rgba(255, 0, 0, 0.342); */
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .preview {
+            width: 400px;
+            height: 400px;
+            box-shadow: 0 0 5px 0 rgb(153, 153, 153);
+            overflow: hidden;
+            margin-left: 20px;
+            position: relative;
+            display: none;
+        }
+
+        .xxx:hover .preview {
+            display: block;
+        }
+
+
+        .preview img{
+            width: 300%;
+            position: absolute;
+            top: 0;
+            left: 0;
+
+        }
+
+        label {
+            margin-left: 20px;
+            transition: all 1s;
+
+        }
+
+        label img {
+            width: 50px;
+            height: 50px;
+            border: 1px solid black;
+            margin-top: 10px;
+
+        }
+
+        label img:hover {
+            border: 1px solid red;
+        }
+
+        label input {
+            display: none;
+            
+        }
+    </style>
+
+    <script>
+        var stage = document.querySelector(".stage");
+        var mask = document.querySelector(".mask");
+        var preview = document.querySelector(".preview img");
+
+        // onmousemove  over out   move移动
+        stage.onmousemove = function (event) {
+            // console.log(event.offsetX);
+            // console.log(event.clientX - stage.offsetLeft);
+            var x = event.clientX - stage.offsetLeft;
+            var y = event.clientY - stage.offsetTop;
+            console.log(x, y);
+            // 鼠标的位置
+
+            // mask左上角
+            maskX = x - 75;
+            maskY = y - 75;
+            if (maskX < 0) {
+                maskX = 0;
+            }
+            if (maskX > stage.offsetWidth - mask.offsetWidth) {
+                maskX = stage.offsetWidth - mask.offsetWidth;
+            }
+            if (maskY < 0) {
+                maskY = 0;
+            }
+            if (maskY > stage.offsetHeight - mask.offsetHeight) {
+                maskY = stage.offsetHeight - mask.offsetHeight;
+            }
+
+            mask.style.left = maskX + "px";
+            mask.style.top = maskY + "px";
+            // mask左上角的位置
+
+            // preview
+            preview.style.left = -maskX * 3 + "px";
+            preview.style.top = -maskY * 3 + "px";
+        };
+
+        // 图片切换
+        var imgs = document.querySelectorAll("label img");
+        var previewImg = document.querySelector(".preview img");
+        var stageImg = document.querySelector(".stage img");
+
+
+        for (var i = 0; i < imgs.length; i++) {
+            imgs[i].onclick = function () {
+                previewImg.src = this.src;
+                stageImg.src = this.src;
+            };
+        }
+
+
+
+        
+
+    </script>
+</body>
+
+</html>
