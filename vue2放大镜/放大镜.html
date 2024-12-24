@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue 放大镜效果</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.14/vue.min.js"></script>
+    <style>
+        .xd {
+            display: flex;
+        }
+
+        .stage {
+            width: 400px;
+            height: 400px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stage:hover {
+            cursor: zoom-in;
+        }
+
+        .stage img {
+            width: 100%;
+        }
+
+        .mask {
+            width: 100px;
+            height: 100px;
+            background-image: url("./img/mask-bg.png");
+            opacity: 0.5;
+            background-size: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .preview {
+            width: 400px;
+            height: 400px;
+            box-shadow: 0 0 5px 0 rgb(153, 153, 153);
+            overflow: hidden;
+            margin-left: 20px;
+            position: relative;
+        }
+
+        .preview img {
+            width: 400%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 当我点击x2时preview的img变成200%，mask的宽高变成150px.点击x4的时候preview的img变成400%，mask的宽高变成75px.点击x6时preview的img变成600%，mask的宽高变成37.5px -->
+    <div id="app">
+        <div class="xd">
+            <div class="stage" @>
+                <img src="./img/1.png" alt="">
+                <div class="mask"></div>
+            </div>
+
+            <div class="preview">
+                <img src="./img/1.png" alt="">
+            </div>
+        </div>
+        <button>x2</button>
+        <button>x4</button>
+        <button>x6</button>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+            },
+            methods: {
+            },
+        });
+
+    </script>
+</body>
+
+</html>

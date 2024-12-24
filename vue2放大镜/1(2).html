@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://v2.cn.vuejs.org/js/vue.js"></script>
+    <style>
+        #xd {
+            position: relative;
+        }
+
+        .sb {
+            height: 50px;
+            width: 100%;
+            position: absolute;
+            bottom: -80px;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="xd" class="xd">
+        <!-- 放大镜区域 -->
+        <div id="stage" class="stage" @mousemove="stageMousemove" ref="stageref">
+            <img src="./img/1.png" alt="" />
+            <div class="mask" :style="maskStyle" ref="maskref"></div>
+        </div>
+
+        <!-- 预览区域 -->
+        <div id="preview" class="preview">
+            <img src="./img/1.png" alt="" :style="imgStyle">
+        </div>
+
+
+        <div class="sb">
+            <input type="range" v-model="inputVal" min="2" max="6" @input="updateZoom">当前为{{ inputVal }}倍放大</input>
+        </div>
+
+    </div>
+    <style>
+        .xd {
+            display: flex;
+        }
+
+        .stage {
+            width: 400px;
+            height: 400px;
+            position: relative;
+        }
+
+        .stage:hover {
+            cursor: zoom-in;
+        }
+
+        .stage img {
+            width: 100%;
+        }
+
+        .stage .mask {
+            width: 100px;
+            height: 100px;
+            background-color: rgba(0, 0, 0, 0.4);
+            /* 示例背景 */
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            /* 确保鼠标事件不被遮挡 */
+        }
+
+        .preview {
+            width: 400px;
+            height: 400px;
+            box-shadow: 0 0 5px 0 rgb(153, 153, 153);
+            overflow: hidden;
+            margin-left: 20px;
+            position: relative;
+        }
+
+        .preview img {
+            width: 400%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+
+    <script>
+        var app1 = new Vue({
+            el: '#xd',
+            data: {
+                maskX: 0,  // mask 初始位置
+                maskY: 0,  // mask 初始位置
+                inputVal: 4,  // 输入框的值
+                // maskStyle: {},  // mask 的样式:
+                // maskwhile: null,
+                // maskHeight: null,
+                // imgwhile: null,
+                // imgheight: null,
+
+                imgStyle: {},
+                maskStyle: {}
+
+
+
+            },
+            methods: {
+                stageMousemove(e) {
+                    // console.log('X',e.clientX,'Y',e.clientY);
+                    // console.log('winX',e.target,'winY',e.target);
+
+                    let beilv = this.inputVal
+                    let x = e.clientX - this.$refs.stageref.offsetLeft
+                    let y = e.clientY - this.$refs.stageref.offsetTop
+
+                    console.log('X', x, 'Y', y);
+                    // console.log(e.target.offsetTop);
+                    console.log(this.$refs.maskref.offsetWidth);
+
+                    maskX = x - 400 / (2 * beilv);
+                    maskY = y - 400 / (2 * beilv);
+
+
+                    if (maskX < 0) {
+                        maskX = 0;
+                    }
+                    if (maskX > this.$refs.stageref.offsetWidth - this.$refs.maskref.offsetWidth) {
+                        maskX = this.$refs.stageref.offsetWidth - this.$refs.maskref.offsetWidth;
+                    }
+                    if (maskY < 0) {
+                        maskY = 0;
+                    }
+                    if (maskY > this.$refs.stageref.offsetHeight - this.$refs.maskref.offsetHeight) {
+                        maskY = this.$refs.stageref.offsetHeight - this.$refs.maskref.offsetHeight;
+                    }
+
+
+                    this.maskStyle = {
+                        width: 400 / beilv + 'px',
+                        height: 400 / beilv + 'px',
+
+                        left: (maskX) + "px",
+                        top: (maskY) + "px"
+                    }
+
+                    this.imgStyle = {
+                        width: beilv * 100 + '%',
+                        height: beilv * 100 + '%',
+                        left: -maskX * beilv + 'px',
+                        top: -maskY * beilv + 'px'
+                    }
+
+
+                }
+            }
+
+
+
+
+
+        // onMouseLeave() {
+        //     // 当鼠标离开时，隐藏 mask
+        //     this.maskX = -100; // 让 mask 超出屏幕外，避免遮挡
+        //     this.maskY = -100;
+        // }
+
+
+        //     }
+        // });}
+        })
+    </script>
+</body>
+
+</html>

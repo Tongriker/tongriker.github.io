@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://v2.cn.vuejs.org/js/vue.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/1.7.2/axios.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model="keywords" placeholder="搜索关键词">
+        <button>搜索</button>
+        <ul>
+            <li v-for="song in songs" :key="songs.id">
+                {{songs.name}} -{{songs.artists}}
+            </li>
+        </ul>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                keywords: '',
+                songs: []
+            },
+            methods: {
+                search() {
+                    axios.get('https://apis.netstart.cn/music/search?keywords=' + this.keywords).then(res => {
+                        this.songs = res.data.result.songs;
+                    })
+                }
+            }
+        })
+
+    </script>
+    
+
+</body>
+
+</html>

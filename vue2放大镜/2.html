@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://v2.cn.vuejs.org/js/vue.js"></script>
+</head>
+
+<body>
+    <div id="xd" class="xd">
+        <!-- 放大镜区域 -->
+        <div id="stage" class="stage" @mousemove="onMouseMove" @mouseleave="onMouseLeave" ref="stage">
+            <img src="./img/1.png" alt="" />
+            <div class="mask" :style="maskStyle" ref="mask"></div>
+        </div>
+
+        <!-- 预览区域 -->
+        <div id="preview" class="preview">
+            <img src="./img/1.png" alt="" :style="imgStyle">
+        </div>
+
+    </div>
+    <input type="range" v-model="inputVal" min="2" max="6" @input="updateZoom">当前为{{ inputVal }}倍放大</input>
+    <style>
+       .xd {
+            display: flex;
+        }
+
+       .stage {
+            width: 400px;
+            height: 400px;
+            position: relative;
+        }
+
+       .stage:hover {
+            cursor: zoom-in;
+        }
+
+       .stage img {
+            width: 100%;
+        }
+
+       .stage.mask {
+            width: 100px;
+            height: 100px;
+            background-color: rgba(0, 0, 0, 0.4);
+            /* 示例背景 */
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            /* 确保鼠标事件不被遮挡 */
+        }
+
+       .preview {
+            width: 400px;
+            height: 400px;
+            box-shadow: 0 0 5px 0 rgb(153, 153, 153);
+            overflow: hidden;
+            margin-left: 20px;
+            position: relative;
+        }
+
+       .preview img {
+            width: 400%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+
+    <script>
+        var app1 = new Vue({
+            el: '#xd',
+            data: {
+                maskX: 0,  // mask 初始位置
+                maskY: 0,  // mask 初始位置
+                inputVal: 4,  // 输入框的值
+            },
+            computed: {
+                maskStyle() {
+                    return {
+                        left: `${this.maskX}px`,
+                        top: `${this.maskY}px`
+                    };
+                },
+                imgStyle() {
+                    return {
+                        left: `${-this.maskX * this.inputVal}px`,  // 通过 mask 的位置来调整预览图的偏移
+                        top: `${-this.maskY * this.inputVal}px`
+                    };
+                }
+                
+            },
+            methods: {
+                onMouseMove(event) {
+                    const stageRect = this.$refs.stage.getBoundingClientRect(); // 获取 stage 的边界信息
+                    let x = event.clientX - stageRect.left;  // 鼠标相对 stage 的 X 坐标
+                    let y = event.clientY - stageRect.top;   // 鼠标相对 stage 的 Y 坐标
+
+                    // 计算 mask 的位置，使其居中于鼠标位置
+                    let maskX = x - 50;  // 100 / 2 (mask 的宽度的一半)
+                    let maskY = y - 50;  // 100 / 2 (mask 的高度的一半)
+
+                    // 限制 mask 在 stage 内部移动
+                    if (maskX < 0) maskX = 0;
+                    if (maskX > stageRect.width - 100) maskX = stageRect.width - 100; // 100 是 mask 的宽度
+                    if (maskY < 0) maskY = 0;
+                    if (maskY > stageRect.height - 100) maskY = stageRect.height - 100; // 100 是 mask 的高度
+
+                    this.maskX = maskX;  // 更新 mask 的 X 坐标
+                    this.maskY = maskY;  // 更新 mask 的 Y 坐标
+                },
+
+                onMouseLeave() {
+                    // 当鼠标离开时，隐藏 mask
+                    this.maskX = -100; // 让 mask 超出屏幕外，避免遮挡
+                    this.maskY = -100;
+                },
+                updateZoom() {
+                    // 当输入框的值改变时，更新预览图片的放大倍数
+                    this.imgStyle.left = `${-this.maskX * this.inputVal}px`;
+                    this.imgStyle.top = `${-this.maskY * this.inputVal}px`;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
